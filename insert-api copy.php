@@ -16,9 +16,9 @@ $student_city = $data['scity'];
 $sql = "UPDATE students SET student_name='{$student_name}', age='{$student_age}', city='{$student_city}' WHERE id = '{$student_id}'";
 
 if(mysqli_query($conn, $sql)){
-    echo json_encode(array('message' => 'Student Record Updated.','status'=>false));
+    echo json_encode(array('message' => 'Student data inserted successfully.','status'=>false));
 }
 else{
-    echo json_encode(array('message' => 'Student Record Not Updated.','status'=>false));
+    echo json_encode(array('message' => 'Student data is not inserted.','status'=>false));
 }
 ?>
