@@ -4,10 +4,9 @@ include("config.php");
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin:*');
 
-$data = json_decode(file_get_contents("php//input"), true);
+$data = json_decode(file_get_contents("php://input"), TRUE);
 
 $student_id = $data['sid'];
-
 $sql = "SELECT * FROM students WHERE id = {$student_id}";
 $result = mysqli_query($conn, $sql) or die("SQL Query Failed.");
 

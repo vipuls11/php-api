@@ -13,7 +13,7 @@ $student_name = $data['sname'];
 $student_age = $data['sage'];
 $student_city = $data['scity'];
 
-$sql = "UPDATE students SET student_name='{$student_name}', age='{$student_age}', city='{$student_city}' WHERE id = '{$student_id}'";
+$sql = "UPDATE students SET name='{$student_name}', age={$student_age}, city='{$student_city}' WHERE id = {$student_id}";
 
 if(mysqli_query($conn, $sql)){
     echo json_encode(array('message' => 'Student data inserted successfully.','status'=>false));

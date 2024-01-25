@@ -1,3 +1,3 @@
 <?php
-$conn = mysqli_connect("localhost","root","","api_db") or die("Connection failed!");
+$conn = mysqli_connect('localhost','root','','api_learning', 3308) or die("Connection failed!");
 ?>
