@@ -6,7 +6,7 @@ header('Access-Control-Allow-Origin:*');
 header('Access-Control-Allow-Methods:POST');
 header('Access-Control-Allow-headers: Access-Control-Allow-headers,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
-$data = json_decode(file_get_contents("php//input"), true);
+$data = json_decode(file_get_contents("php://input"), true);
 
 $student_id = $data['sid'];
 $student_name = $data['sname'];

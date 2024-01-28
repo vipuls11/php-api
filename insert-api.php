@@ -13,7 +13,7 @@ $student_age = $data['sage'];
 $student_city = $data['scity'];
 
 $sql = "INSERT INTO students(id, name, age, city) VALUES ({$student_id },'{$student_name}',{$student_age},'{$student_city}')";
-echo ($sql);
+
 if(mysqli_query($conn, $sql)){
     echo json_encode(array('message' => 'Record added successsfully.','status'=>true));
 }

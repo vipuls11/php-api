@@ -4,76 +4,88 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
   <body>
     <div>
-        <form>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Email address</label>
-              <input type="text" name="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-              </div>
-          
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+      <table id="main" border="0" cellspacing="0">
+        <tr>
+          <td id="header">
+            <h1>
+              PHP REST API CRUD
+            </h1>
 
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Launch demo modal
-                      </button>
-                       <button> delete</button></td>
-              </tr>
+            <div id="search-bar">
+              <label for="">Search :</label>
+              <input type="text" name="search" id="search" autocomplete="off">
+            </div>
+          </td>
+          </td>
+        </tr>
+        <!-- Table with database data -->
+        <tr>
+        <td id="table-form">
+          <form id="addForm">
+            Name:<input id="sanme">
+            Age: <input type="" id="sage">
+            City: <input type="" id="scity">
+            <input type="submit" id="save-button" value="Save">
+          </form>
+        </td>   
+      </tr>
+      <tr>
+        <td>
+          <table width="100%" cellpadding="10px">
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>City</th>
+               <th>Edit</th> 
+               <th>Delete</th> 
+            </tr>
+            <tbody id="load-table">
+            <!-- <tr>
+              <td class="center">1</td>
+              <td>Name 1</td>
+              <td>Age 1(25)</td>
+              <td>Delhi</td>
+              <td class="center"><button class="edit-btn" data-eid=""  data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button></td>
+              <td class="center"><button class="delete-btn" data-did="">Delete</button></td>
+            </tr> -->
             </tbody>
           </table>
+        </td>
+      </tr>     
+    </table>
+
     </div>
 
 
   
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog" id="modal-form">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form>
+            <form id="edit-form">
+                <input type="text" name="sid" id="edit-id" hidden="">
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Email address</label>
-                  <input type="text" name="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <label for="edit-name" class="form-label">Email address</label>
+                  <input type="text" name="sname" class="form-control" id="edit-name" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="edit-age" class="form-label">Email address</label>
+                    <input type="number" class="form-control" id="edit-age" aria-describedby="ageHelp">
                   </div>
                   <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="edit-city" class="form-label">Email address</label>
+                    <input type="text" class="form-control" id="edit-city" aria-describedby="cityHelp">
                   </div>
               
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -81,11 +93,20 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
         </div>
       </div>
     </div>
   </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/fetch-all.js"></script>
+    <script type="text/javascript" src="js/single-fetch.js"></script>
+    <script type="text/javascript">
+    
+
+
+        
+        
+    </script>
   </body>
 </html>
