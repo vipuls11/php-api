@@ -1,4 +1,6 @@
 $(document).ready(function(){
+  function loadTable(){
+    $("#load-table").html("");
     // Fetch All Records
     $.ajax({
      url : 'http://localhost/php%20api/api-fetch-all.php',
@@ -26,5 +28,7 @@ $(document).ready(function(){
       }
       }
     });
+  }
+  loadTable();
   });
-   loadTable();
+  
