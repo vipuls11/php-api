@@ -4,6 +4,7 @@ include("config.php");
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin:*');
 
+
 $sql = "SELECT * from students";
 $result = mysqli_query($conn, $sql) or die("SQL Query Failed.");
 

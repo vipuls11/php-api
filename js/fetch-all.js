@@ -13,7 +13,7 @@ $(document).ready(function(){
       else
       {
         $.each(data, function(key, value){
-          $("#load-table").append("<tr>"
+          $("#load-table").append("<tr>" 
             +"<td>"+value.id+"</td>"
             +"<td>"+value.name+"</td>"
             +"<td>"+value.age+"</td>"

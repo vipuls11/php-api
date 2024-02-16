@@ -10,11 +10,11 @@ $("#edit-submit").on("click", function(e){
     }else{
         $.ajax({
             url: 'http://localhost/php%20api/api-update.php', 
-            type: 'POST', 
-            data:jsonObj,  
+            type: "POST", 
+            data: jsonObj,  
             success: function(data){
                 message(data.message, data.status);
-                // console.log(data)
+                console.log(data)
                 if(data.status == true){
                     loadTable();
                     $("#addForm").trigger("reset");

@@ -1,3 +1,4 @@
+
 // Show Success Error messages
 function message(message, status) {
   if (status == true) {
@@ -32,13 +33,13 @@ function jsonData(targetform) {
   var json_string = JSON.stringify(obj);
   // console.log(json_string,"heloiojfijnfj");
   return json_string;
+  
 }
 
 $("#save-button").on("click", function(e) {
   e.preventDefault();
-  //  console.log(jsonObj)
     var jsonObj = jsonData("#addForm");
-    console.log(jsonObj)
+    // console.log(jsonObj)
     if (jsonObj == false) {
       message("All Fields are required.", false);
     } else {
@@ -47,14 +48,14 @@ $("#save-button").on("click", function(e) {
         type: "POST",
         data: jsonObj,
         success: function(data){
-            console.log(data)
           message(data.message, data.status);
 
           if (data.status == true) {
             loadTable();
             $("#addForm").trigger("reset");
           }
-        },
+        }
+       
       });
     }
 });
